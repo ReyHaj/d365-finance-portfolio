@@ -2,11 +2,6 @@
 # Project 01 – End-to-End Customer Invoice Process (Accounts Receivable)
 ### Microsoft Dynamics 365 Finance – Portfolio Project  
 
----
-# Project 01 – AR Customer Invoice
-# Project 01 – End-to-End Customer Invoice Process (Accounts Receivable)
-### Microsoft Dynamics 365 Finance – Portfolio Project  
-
 ## 📌 Project Overview
 This project demonstrates the full **Accounts Receivable (AR)** invoicing lifecycle in Microsoft Dynamics 365 Finance.  
 It simulates a real business scenario where a customer is created, an invoice is issued, posted, and analysed through financial and AR reporting tools.
