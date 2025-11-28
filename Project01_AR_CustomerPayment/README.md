@@ -169,4 +169,4 @@ Project 04 – Collections & Interest Notes
 Reyhaneh – D365 Finance Functional Consultant (Junior Level)
 📧 Email: reyhaneh.hajili2728@gmail.com
 📱 Phone: +39 392 305 6496
-🌐 GitHub & LinkedIn: links to be added
+
