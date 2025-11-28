@@ -1,0 +1,304 @@
+# Project 02 – Customer Payments & Settlement  
+**Detailed Step-by-Step Documentation**
+
+This document explains, step by step, how customer payments are recorded, posted, settled, and analysed for **Customer P01-0001 – Project01 Test Customer**.
+
+> Prerequisite: Project 01 has already created and posted:
+> - Free Text Invoice: **FTI-00000020** – 262.50 USD  
+> - Sales Order Invoice: **CIV-00000715** – 480.00 USD  
+
+---
+
+## Phase 0 – Starting Point: Open AR Invoices
+
+**Navigation**
+
+> Accounts receivable > Customers > All customers >  
+> Open **P01-0001** > Click **Transactions**
+
+**What to verify**
+
+- You should see at least two **open** transactions:
+  - Transaction type: **Customer** – Invoice `FTI-00000020` – Amount 262.50 – Balance 262.50  
+  - Transaction type: **Sales order** – Invoice `CIV-00000715` – Amount 480.00 – Balance 480.00
+- Both balances are **greater than 0** → customer owes the company.
+
+Take a screenshot:  
+`/Screenshots/Phase00_Transactions_BeforePayment.png`
+
+---
+
+## Phase 1 – Create Customer Payment Journal
+
+### 1.1 Open the Customer payment journal list
+
+**Navigation**
+
+> Accounts receivable > Payments > Customer payments > Customer payment journal
+
+Here you see a list of previous journals (journal name `CustPay` in your environment).
+
+### 1.2 Create a new journal header
+
+- Click **New**
+- Fields:
+  - **Name**: `CustPay`  
+  - **Description**: `Project 02 – Customer Payments`
+- Click **Save**
+- Click **Lines** to enter payment lines.
+
+Screenshot suggestion:  
+`Phase01_JournalHeader/01_JournalHeader.png`
+
+---
+
+## Phase 2 – Enter Payment Lines (Two Separate Payments)
+
+In this project, we simulate **two separate bank receipts**:
+
+1. One for the Sales Order invoice (480.00)  
+2. One for the Free Text invoice (262.50)
+
+### 2.1 Payment line for Sales Order invoice (480.00)
+
+On the **Lines** page:
+
+- **Account type**: `Customer`
+- **Account**: `P01-0001`
+- **Date**: choose payment date (e.g. 11/25/2025)
+- **Description**: `Payment for invoice CIV-00000715`
+- **Offset account type**: `Bank`
+- **Offset account**: e.g. `USMF OPER` (Bank account in USMF)
+- **Currency**: `USD`
+- **Credit**: `480.00`
+- **Debit**: `0.00`
+- **Method of payment**: `CHECK` (or any valid method)
+
+> Consultant logic:  
+> - Customer is **credit** because we **reduce** Accounts Receivable.  
+> - Bank is **debit** because company cash **increases**.
+
+Later we will use **Settle transactions** so that this payment closes invoice `CIV-00000715`.
+
+### 2.2 Payment line for Free Text invoice (262.50)
+
+Add a **second line**:
+
+- **Account type**: `Customer`
+- **Account**: `P01-0001`
+- **Date**: same or different date
+- **Description**: `Payment for invoice FTI-00000020`
+- **Credit**: `262.50`
+- Other fields similar to the first line.
+
+Screenshot suggestions:
+
+- `Phase02_JournalLine_Posting/02_SalesOrder_PaymentLine.png`  
+- `Phase02_JournalLine_Posting/03_FTI_PaymentLine.png`
+
+### 2.3 Validate and Post
+
+- Click **Validate > Validate** to check for configuration errors.  
+- If no errors appear, click **Post > Post**.
+
+Result:
+
+- A **voucher** is posted for each payment line.
+- Customer transaction list now includes **two payment transactions** (`ARPM...` style vouchers).
+
+---
+
+## Phase 3 – Settlement (Apply Payments to Invoices)
+
+The journal posted payments to AR and Bank, but **settlement** connects each payment to a specific invoice.
+
+We will perform **full settlement**:
+
+- Payment 480.00 → Sales invoice 480.00  
+- Payment 262.50 → FTI invoice 262.50
+
+### 3.1 Settlement for Free Text invoice
+
+**Navigation**
+
+> Accounts receivable > Customers > All customers >  
+> Customer **P01-0001** > **Transactions**
+
+1. Select the **payment transaction** related to `FTI-00000020`
+   - Transaction type: **Payment**
+   - Amount: –262.50
+2. Click **Settlement > Settle transactions**
+
+In the **Settle transactions** form:
+
+- Find invoice `FTI-00000020`  
+- Mark the checkbox in the **Mark** column.
+- Confirm that the **Amount to settle** equals `262.50`.
+- Click **OK**.
+
+Result:
+
+- Payment and invoice are now **settled**.
+- Balance for the invoice becomes **0.00**.
+- The **Last settlement** date is populated.
+- A **settlement record** exists under **View settlements**:
+
+  - Document type: Payment vs Customer  
+  - Amount settled in transaction currency: 262.50  
+  - Balance: 0.00
+
+Screenshot suggestions:
+
+- `Phase03_SettlementView/01_Settlement_FTI.png`  
+- `Phase03_SettlementView/02_ViewSettlements_FTI.png`
+
+### 3.2 Settlement for Sales Order invoice
+
+Repeat the same steps but choose the **480.00** payment and invoice `CIV-00000715`:
+
+- In **Settle transactions**, mark invoice `CIV...`
+- Confirm full settlement `480.00`
+- Click **OK**
+
+Result:
+
+- Sales order invoice becomes **closed**.
+- Payment `ARPM...` shows as settled.
+- **View settlements** shows linkage between payment and invoice.
+
+Screenshot suggestions:
+
+- `Phase03_SettlementView/03_Settlement_SO.png`  
+- `Phase03_SettlementView/04_ViewSettlements_SO.png`
+
+---
+
+## Phase 4 – Voucher & Ledger Analysis
+
+Now we analyse the **ledger impact** of customer payments.
+
+### 4.1 Open voucher from payment transaction
+
+From **Customer transactions** for P01-0001:
+
+1. Select the **payment** transaction (e.g. `ARPM000910` or `ARPM000911`).
+2. Click **Voucher**.
+
+You will see two lines per payment:
+
+Example for payment 480.00 (Sales Order):
+
+| Ledger account | Account name          | Debit  | Credit | Posting type        |
+|----------------|----------------------|--------|--------|---------------------|
+| 110110-001     | Bank Account – USD   | 480.00 | 0.00   | Bank                |
+| 130100-…       | Accounts Receivable  | 0.00   | 480.00 | Customer balance    |
+
+Example for payment 262.50 (Free Text):
+
+| Ledger account | Account name          | Debit  | Credit | Posting type        |
+|----------------|----------------------|--------|--------|---------------------|
+| 110110-001     | Bank Account – USD   | 262.50 | 0.00   | Bank                |
+| 130100-…       | Accounts Receivable  | 0.00   | 262.50 | Customer balance    |
+
+**Consultant explanation**
+
+- When we posted the invoice (Project 01):
+
+  - DR Accounts Receivable / CR Revenue (+ CR Tax, etc.)
+
+- When we post the payment:
+
+  - DR Bank / CR Accounts Receivable
+
+- After both sides are posted and **settled**, the net effect on AR is **zero**:
+
+  - AR Debit (from invoice) – AR Credit (from payment) = 0  
+  - This is visible in **Customer transactions** → Balance 0 and Invoice status Closed.
+
+Screenshot suggestions:
+
+- `Phase04_Voucher/01_Voucher_SO_Payment.png`  
+- `Phase04_Voucher/02_Voucher_FTI_Payment.png`
+
+---
+
+## Phase 5 – AR Reporting (Customer Aging Report)
+
+### 5.1 Run the Customer aging report
+
+**Navigation**
+
+> Accounts receivable > Inquiries and reports > Customers >  
+> **Customer aging report**
+
+This opens the **Customer aging report** dialog.
+
+Key parameters (example):
+
+- **Aging as of**: today’s date (e.g. 11/21/2025)
+- **Criteria**: `Due date` (common option)
+- **Aging period definition**: e.g. `30_60_90_180`
+- **Currency for aging**: `Accounting currency`
+- Other options: keep default
+
+Click **OK** to generate the report.
+
+### 5.2 Interpret the report
+
+- Before payments: customer P01-0001 would appear with amounts in the aging buckets (current / 30 days, etc.).  
+- After payments and settlement:
+  - P01-0001 should have **no open balance**.  
+  - Therefore, the customer **does not appear** or appears with **0** in all columns.
+
+Screenshot suggestions:
+
+- `Phase05_AgingReport/01_AgingReport_AllCustomers.png`
+
+**Functional meaning**
+
+- The aging report shows **outstanding AR** only.
+- Once an invoice is **fully paid and settled**, it drops out of aging.
+- This is a key control report for **collections, credit control, and cash flow forecasting**.
+
+---
+
+## Concept Summary – What We Did and Why
+
+1. **Invoices (from Project 01)** created **AR balances** for customer P01-0001.  
+2. In **Project 02**, we:
+   - Recorded **two customer payments** in a **Customer payment journal**.  
+   - Posted them, creating **Bank debit / AR credit** entries.  
+   - Performed **settlement**, linking each payment to its invoice.  
+   - Verified that **customer balance is zero**.  
+   - Analysed **voucher postings** to understand GL impact.  
+   - Confirmed through **Customer aging report** that there are no open receivables.
+
+---
+
+## MB-310 & Consultant Notes
+
+- Customer payment journals are part of **Order-to-Cash (O2C)** end-to-end.  
+- Key configuration that a consultant must know:
+  - Journal name (e.g. `CustPay`)  
+  - Offset account type and bank account  
+  - Method of payment  
+  - Settlement rules (automatic vs manual)  
+- For the exam and real projects, you must:
+  - Understand the **difference between posting a payment** and **settling** it.  
+  - Be able to **navigate from customer → transactions → settlement → voucher**.  
+  - Explain the **accounting effect** in simple debit/credit language.  
+  - Use AR reports (aging, customer balance) to validate end results.
+
+---
+
+## Next Steps / Possible Extensions
+
+Future enhancements to this project:
+
+- Partial payments and **remaining balance** scenarios  
+- **Cash discounts** and **write-off** of small differences  
+- **Prepayments / deposits** (customer pays before invoice)  
+- Returned payments / bounced checks  
+- Integration with **Bank reconciliation** and **Cash & Bank Management**
+
+This completes **Project 02 – Customer Payments & Settlement**.
