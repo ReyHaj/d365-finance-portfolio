@@ -1,4 +1,4 @@
-# Project 02 – Customer Payments & Settlement  
+# Project 01–AR- Customer Payments & Settlement  
 **Detailed Step-by-Step Documentation**
 
 This document explains, step by step, how customer payments are recorded, posted, settled, and analysed for **Customer P01-0001 – Project01 Test Customer**.
@@ -43,7 +43,7 @@ Here you see a list of previous journals (journal name `CustPay` in your environ
 - Click **New**
 - Fields:
   - **Name**: `CustPay`  
-  - **Description**: `Project 02 – Customer Payments`
+  - **Description**: `Project 01–AR-Customer Payments`
 - Click **Save**
 - Click **Lines** to enter payment lines.
 
@@ -265,7 +265,7 @@ Screenshot suggestions:
 ## Concept Summary – What We Did and Why
 
 1. **Invoices (from Project 01)** created **AR balances** for customer P01-0001.  
-2. In **Project 02**, we:
+2. In **Project 01-AR-Customer Payment**, we:
    - Recorded **two customer payments** in a **Customer payment journal**.  
    - Posted them, creating **Bank debit / AR credit** entries.  
    - Performed **settlement**, linking each payment to its invoice.  
@@ -301,4 +301,3 @@ Future enhancements to this project:
 - Returned payments / bounced checks  
 - Integration with **Bank reconciliation** and **Cash & Bank Management**
 
-This completes **Project 02 – Customer Payments & Settlement**.
