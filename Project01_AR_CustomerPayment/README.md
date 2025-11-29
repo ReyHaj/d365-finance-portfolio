@@ -1,4 +1,4 @@
-# Project 02 – AR Customer Payments & Settlement  
+# Project 01 – AR Customer Payments & Settlement  
 **Microsoft Dynamics 365 Finance – Accounts Receivable**
 
 This project demonstrates the **Customer Payment** and **Settlement** process in Microsoft Dynamics 365 Finance, continuing from **Project 01 – AR Customer Invoice**.
@@ -164,6 +164,20 @@ Future AR projects may include:
 Project 03 – Customer Credit Notes & Adjustments
 
 Project 04 – Collections & Interest Notes
+
+
+#  Phase 2.1 Start the Customer Payment Journal (In-System Work).png
+#	Phase 2.2 Start the Customer Payment Journal (In-System Work).png
+#	Phase 3.1.Validate Payment Posting + GL Voucher Analysis.png
+#	Phase 3.2.Validate Payment Posting + GL Voucher Analysis.png.png
+#	Phase1.2.Foundation Setup (Customer Payments Basics).png
+#	ScreenShots/Phase 1.1.Foundation Setup (Customer Payments Basics).png
+#	phase 4.1.Voucher Analysis (Final Validation).png
+#	phase 4.2.Voucher Analysis (Final Validation).png
+#	phase 5.1.Customer aging report.png
+#	phase 5.2.Customer aging report.png
+
+
 
 📞 Contact
 Reyhaneh – D365 Finance Functional Consultant (Junior Level)
