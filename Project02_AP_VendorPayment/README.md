@@ -4,14 +4,14 @@ Status: In Progress
 Module: Accounts Payable
 Cycle: Procure-to-Pay (P2P)
 
-📌 Overview
+ *** Overview
 
 This project focuses on building the complete Accounts Payable (AP) workflow inside Microsoft Dynamics 365 Finance.
 The goal is to configure vendor-related master data and execute the full Procure-to-Pay cycle, including purchasing, receiving goods, invoicing, and vendor payments.
 
 This project connects with my previous AR projects (Project 01 & 02) to form a full financial cycle for my D365 Finance Functional Consultant portfolio.
 
-🎯 Objectives
+ *** Objectives
 
 Configure vendor master data: groups, posting profiles, payment terms/methods, bank accounts
 
@@ -31,7 +31,7 @@ Validate subledger + general ledger postings
 
 Prepare reusable documentation for GitHub & LinkedIn
 
-🔄 Scope (High-Level)
+**** Scope (High-Level)
 
 Vendor setup (ABC Supplier)
 
