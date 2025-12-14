@@ -36,6 +36,7 @@ What happened operationally is exactly what appears in financial reporting.
 
 ** Scope of Phase 6
 Phase 6 focuses on validating three major reporting areas:
+
 1️⃣ Accounts Payable Reporting (AP)
 
     Vendor balances
@@ -132,11 +133,11 @@ Phase 6 focuses on validating three major reporting areas:
 *** Outputs of Phase 6 (RESULTS)
 
     After completing Phase 6, the following outcomes were achieved:
-    ✅ Vendor balances are accurate
-    ✅ Customer balances are accurate
-    ✅ AP and AR aging reports are consistent
-    ✅ Voucher postings are correct
-    ✅ General Ledger is ready for Trial Balance
+     - Vendor balances are accurate
+     - Customer balances are accurate
+     - AP and AR aging reports are consistent
+     - Voucher postings are correct
+     - General Ledger is ready for Trial Balance
 
 *** Without Phase 6:
 
