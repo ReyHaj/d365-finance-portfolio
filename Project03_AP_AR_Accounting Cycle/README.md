@@ -3,7 +3,7 @@ Microsoft Dynamics 365 Finance – End-to-End Financial Cycles (Phase 6–9)
 
 *** Project Overview
 
-    This project demonstrates end-to-end financial processes in Microsoft Dynamics 365 Finance & Operations, covering            reporting, inventory valuation, trial balance validation, and cash flow forecasting & analysis.
+    This project demonstrates end-to-end financial processes in Microsoft Dynamics 365 Finance & Operations, covering reporting, inventory valuation, trial balance validation, and cash flow forecasting & analysis.
     The goal of this project is to showcase practical functional knowledge aligned with real-world finance operations, suitable for:
     Functional Consultant roles
     Finance system implementation
