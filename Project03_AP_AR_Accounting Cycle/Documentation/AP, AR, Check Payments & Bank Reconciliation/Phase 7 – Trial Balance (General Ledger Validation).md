@@ -46,7 +46,8 @@ Phase 7 focuses exclusively on General Ledger validation, including:
     Cross-module posting effects (AP, AR, Inventory, Bank)
     Posting layer accuracy
 
-🧩 Activities Performed (HOW)
+** Activities Performed (HOW)
+
 🔹 1. Generate Trial Balance
 
     Navigation: General ledger > Inquiries and reports > Trial balance
@@ -103,11 +104,11 @@ Phase 7 focuses exclusively on General Ledger validation, including:
 ** Outputs of Phase 7 (RESULTS)
 
     After completing Phase 7, the following outcomes were achieved:
-    ✅ General Ledger is balanced
-    ✅ Debit totals equal Credit totals
-    ✅ All AP, AR, Inventory, and Bank postings are reflected
-    ✅ Ledger is ready for financial statements
-    ✅ Financial data is audit-ready
+     - General Ledger is balanced
+     - Debit totals equal Credit totals
+     - All AP, AR, Inventory, and Bank postings are reflected
+     - Ledger is ready for financial statements
+     - Financial data is audit-ready
 
 ** Without Phase 7:
 
